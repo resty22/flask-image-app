@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload & Manipulasi Gambar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Upload & Manipulasi Gambar</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if filename %}
+        <h2>Hasil Gambar:</h2>
+        <img src="{{ url_for('display_image', filename=filename) }}">
+    {% endif %}
+</body>
+</html>
